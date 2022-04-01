@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 .input {
-  @apply placeholder-shown:text-left placeholder:text-center bg-gray-200 appearance-none  p-2 border-b-2 border-x-2 h-7 w-32 border-gray-400 outline-none border-none text-gray-700 font-josefin;
+  @apply placeholder-shown:text-left placeholder:text-center bg-gray-200 appearance-none  px-3 py-1 border-b-2 border-x-2 h-7 w-32 border-gray-400 outline-none border-none text-gray-700 font-josefin;
 }
 .btns {
   @apply bg-blue-500 text-center px-2  rounded-sm text-slate-300 self-end;
@@ -15,5 +14,8 @@
 }
 /* js */
 .addColor {
-    @apply bg-green-500
+  @apply bg-green-500;
+}
+.removebtn {
+  @apply text-red-500 font-josefin cursor-pointer self-end text-xs;
 }
