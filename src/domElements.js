@@ -1,4 +1,4 @@
-const saveText = () => {
+const domElements = () => {
     const elements = {
         taskName: document.getElementById('task'),
         submitBtn: document.getElementById("submitBtn"),
@@ -9,10 +9,7 @@ const saveText = () => {
         taskTime: document.getElementById('task-time'),
         taskDate: document.getElementById('task-date')
     }
-  const task = {
-    important: false,
-    notes: "",
-  };
-  return { elements:elements, user: task };
+  
+  return { elements:elements};
 };
-export {saveText}
+export {domElements}
