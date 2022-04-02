@@ -19,3 +19,6 @@
 .removebtn {
   @apply text-red-500 font-josefin cursor-pointer self-end text-xs;
 }
+.todoForm {
+  @apply container py-7 flex flex-col justify-start items-center gap-3 w-36;
+}

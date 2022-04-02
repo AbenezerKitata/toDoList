@@ -1,38 +1,42 @@
 import "./styles.css";
-import { domElements } from "./domElements";
 import { saveUserInput } from "./userInput";
 import { giveAtt, todoPage } from "./todo";
 var moment = require("moment");
 
 var a = moment().toString();
 console.log(a);
-
-const dom = domElements();
 const saver = saveUserInput();
-const createTodo = todoPage();
+
+document.getElementById("create-to-do").addEventListener("click", (e) => {
+  e.preventDefault();
+  document
+    .getElementById("wrapper")
+    .parentNode.removeChild(document.getElementById("wrapper"));
+  const createTodo = todoPage();
+});
 
 const usersave = (() => {
-  // dom.elements.taskDate.value = now.getFullYear()
-  const btn = dom.elements.submitBtn;
+  // document.getElementById('task-date').value = now.getFullYear()
+  const btn = document.getElementById("submitBtn");
   // for our submit button
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     //get task name
-    saver.task.taskName = dom.elements.taskName.value;
+    saver.task.taskName = document.getElementById("task").value;
     //get notes
-    saver.task.notes = dom.elements.notes.value;
+    saver.task.notes = document.getElementById("notes").value;
     //get tags
-    let splittedTags = dom.elements.tags.value.split(",");
+    let splittedTags = document.getElementById("tags").value.split(",");
     saver.task.tags = splittedTags.map((itm) => itm.trim());
     //get time
-    saver.task.time = dom.elements.taskTime.value;
+    saver.task.time = document.getElementById("task-time").value;
     //get date
-    saver.task.date = dom.elements.taskDate.value;
+    saver.task.date = document.getElementById("task-date").value;
     console.log(saver.task);
   });
 })();
 const makeimportant = (() => {
-  const important = dom.elements.importantBtn;
+  const important = document.getElementById("importantBtn");
   important.addEventListener("click", (e) => {
     e.preventDefault();
     if (saver.task.important == true) {
@@ -44,9 +48,12 @@ const makeimportant = (() => {
     }
   });
 })();
+
 const taskMaker = () => {
-  const div = dom.elements.checklistContainer;
-  dom.elements.askCheckList.parentNode.removeChild(dom.elements.askCheckList);
+  const div = document.getElementById("checklistContainer");
+  document
+    .getElementById("askCheckList")
+    .parentNode.removeChild(document.getElementById("askCheckList"));
   const addbtn = document.createElement("button");
   addbtn.textContent = "+";
   addbtn.classList.add("btns", "text-lg");
@@ -72,15 +79,17 @@ const taskMaker = () => {
   });
 };
 const changeTxtColor = (() => {
-  const askCheckList = dom.elements.askCheckList;
+  const askCheckList = document.getElementById("askCheckList");
   askCheckList.addEventListener("click", (e) => {
     e.preventDefault();
     taskMaker();
   });
 })();
 const addProjects = (() => {
-  const addToProjectsContainer = dom.elements.addToProjectsContainer;
-  const addToProject = dom.elements.addToProjects;
+  const addToProjectsContainer = document.getElementById(
+    "add-to-project-container"
+  );
+  const addToProject = document.getElementById("addToProject");
   addToProject.addEventListener("click", (e) => {
     e.preventDefault();
     addToProject.parentNode.removeChild(addToProject);

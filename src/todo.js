@@ -4,13 +4,6 @@ function giveAtt(elemType, id, textContent) {
   element.textContent = textContent;
   return element;
 }
-function toStr(str) {
-  const splitted = str
-    .split(" ")
-    .map((item) => `'${item}',`)
-    .join(" ");
-  return splitted;
-}
 const todoPage = () => {
   const wrapper = giveAtt("div", "wrapper", "");
   wrapper.classList.add(
@@ -32,22 +25,13 @@ const todoPage = () => {
   );
   wrapper.appendChild(todoContainer);
   const todoForm = giveAtt("form", "todoForm", "");
-  todoForm.classList.add(
-    "container",
-    "py-7",
-    "flex",
-    "flex-col",
-    "justify-start",
-    "items-center",
-    "gap-3",
-    "w-36"
-  );
+  todoForm.classList.add("todoForm");
   todoContainer.appendChild(todoForm);
   //   title
   const todoTitle = giveAtt("h1", "todoTitle", "To Do List");
   todoTitle.classList.add("mb-5", "text-gray-700");
-  const taskName = giveAtt("input", "task", "");
   //   input
+  const taskName = giveAtt("input", "task", "");
   taskName.classList.add("input");
   taskName.setAttribute("placeholder", "Name of Task");
   //checklist container
@@ -77,19 +61,43 @@ const todoPage = () => {
   //task date
   const taskDate = giveAtt("input", "task-date", "");
   taskDate.setAttribute("type", "date");
-  taskDate.classList.add("input", "rounded-t");
+  taskDate.classList.add("input", "rounded-t", "!px-2");
   const breakDecoration = document.createElement("div");
   breakDecoration.classList.add("border-b-2", "w-36");
   // Important
-  const importantBtn = giveAtt('button', "importantBtn", "important!");
-  importantBtn.classList.add("btns")
+  const importantBtn = giveAtt("button", "importantBtn", "important!");
+  importantBtn.classList.add("btns");
+  const notesContainer = giveAtt("fieldset", "", "");
+  notesContainer.classList.add("relative");
+  const notes = giveAtt("textarea", "notes", "");
+  notes.classList.add("input", "!h-14");
+  notes.setAttribute("placeholder", "notes");
+  notesContainer.append(notes);
+  const tagsContainer = giveAtt("fieldset", "", "");
+  tagsContainer.classList.add("relative");
+  const tags = giveAtt("input", "tags", "");
+  tags.classList.add("input");
+  tags.setAttribute("placeholder", "tags");
+  tagsContainer.append( tags);
+
+  const addtoProjectContainer = giveAtt("div", "add-to-project-container", "");
+  addtoProjectContainer.classList.add('flex', 'flex-col', 'w-36');
+  const addToProject = giveAtt("button", "addToProject", "+Add to project");
+  addToProject.classList.add("btns","text-xs");
+  addtoProjectContainer.appendChild(addToProject);
+  const submitBtn = giveAtt("button", "submitBtn", "Submit");
+  submitBtn.classList.add("btns")
+
   todoForm.append(
     todoTitle,
     taskName,
     checklistContainer,
     taskTime,
     taskDate,
-    breakDecoration, importantBtn
+    breakDecoration,
+    importantBtn,
+    notesContainer,
+    tagsContainer, addtoProjectContainer, submitBtn
   );
 };
 export { giveAtt, todoPage };
